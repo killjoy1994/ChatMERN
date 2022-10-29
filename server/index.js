@@ -21,6 +21,10 @@ io.on("connection", (socket) => {
     console.log(data);
     socket.emit("message-from-server", data);
   });
+
+  socket.on("disconnect", () => {
+    console.log("User left");
+  });
 });
 
 app.get("/", (req, res) => {
