@@ -2,6 +2,10 @@ import { io } from "socket.io-client";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import SendIcon from "@mui/icons-material/Send";
 import Typography from "@mui/material/Typography";
 import { Container } from "@mui/material";
 import TextField from "@mui/material/TextField";
@@ -39,16 +43,21 @@ function App() {
           })}
         </Box>
         <Box component="form" onSubmit={submitHandler}>
-          <TextField
+          <OutlinedInput
+            id="outlined-adornment-password"
             size="small"
             label="Write your message"
-            variant="standard"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton type="submit" edge="end">
+                  <SendIcon />
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
           />
-          <Button type="submit" variant="text">
-            Send
-          </Button>
         </Box>
       </Container>
     </div>
